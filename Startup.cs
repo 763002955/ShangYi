@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ShangYi.Data;
 using ShangYi.Models;
-using ShangYi.Services;
 
 namespace ShangYi
 {
@@ -48,10 +47,6 @@ namespace ShangYi
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
-
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,9 +69,7 @@ namespace ShangYi
             app.UseStaticFiles();
 
             app.UseIdentity();
-
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
-
+			
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
