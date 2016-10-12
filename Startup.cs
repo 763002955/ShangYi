@@ -25,6 +25,7 @@ namespace ShangYi
 
             if (env.IsDevelopment())
             {
+                // For more details on using the user secret store s
                 // For more details on using the user secret store see http://gotohahahaha.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
             }
