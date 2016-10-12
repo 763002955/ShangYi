@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ShangYi.Models;
 
 namespace ShangYi.Controllers
 {
@@ -13,19 +14,19 @@ namespace ShangYi.Controllers
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
+		public IActionResult hello (string msg)
+		{
+			return Json (new { Msg = msg });
+		}
 
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
+		public IActionResult haha ()
+		{
+			MyClass obj = new MyClass();
+			obj.name = "John";
+			obj.id = 9;
+			obj.score = 0.5;
+			return Json (obj);
+		}
 
         public IActionResult Error()
         {
