@@ -7,8 +7,8 @@ namespace ShangYi.Models
 {
     public class MyClass
     {
-		public string name { get; set; }
 		public int id { get; set; }
+		public string name { get; set; }
 		public double score { get; set; }
 	}
 }
