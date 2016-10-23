@@ -37,8 +37,10 @@ namespace APITest
 				var obj = new { name = "Jack", score = 0.5 };
 				var jsonStr = JsonConvert.SerializeObject (obj);
 				Console.WriteLine (jsonStr);
-				return client.PostAsync ("http://localhost:2081/api/MyClasses/",
-					new StringContent(jsonStr, Encoding.UTF8, "application/json"));
+				//return client.PostAsync ("http://localhost:2081/api/MyClasses/",
+				//	new StringContent(jsonStr, Encoding.UTF8, "application/json"));
+
+				return client.GetAsync ("http://localhost:2081/api/MyClasses/");
 			}).Wait ();
 		}
 	}

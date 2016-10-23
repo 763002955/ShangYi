@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using ShangYi.Data;
 
-namespace ShangYi.Migrations
+namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -176,6 +176,8 @@ namespace ShangYi.Migrations
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("desc");
 
                     b.Property<string>("name");
 

@@ -130,7 +130,6 @@
 - To
 - Name
 - Phone Number
-- 
 - UID
 - Timestamp
 
@@ -141,7 +140,6 @@
 - Location
 - Salary
 - Phone Number
-- 
 - UID
 - Timestamp
 
@@ -152,7 +150,6 @@
 - Timestamp
 - Content
 - Phone Number
-- 
 - UID
 - Timestamp
 
@@ -164,6 +161,5 @@
 - Attachment
 - Uploader
 - Timestamp
-- 
 - UID
 - Timestamp

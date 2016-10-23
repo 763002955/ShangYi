@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ShangYi.Migrations
+namespace src.Migrations
 {
     public partial class Init : Migration
     {
@@ -60,6 +60,21 @@ namespace ShangYi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MyClass",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    desc = table.Column<string>(nullable: true),
+                    name = table.Column<string>(nullable: true),
+                    score = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MyClass", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -206,6 +221,9 @@ namespace ShangYi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "MyClass");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using ShangYi.Data;
 
-namespace ShangYi.Migrations
+namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161013022505_AddMyClass")]
-    partial class AddMyClass
+    [Migration("20161023132940_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -177,6 +177,8 @@ namespace ShangYi.Migrations
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("desc");
 
                     b.Property<string>("name");
 

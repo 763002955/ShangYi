@@ -10,5 +10,6 @@ namespace ShangYi.Models
 		public int id { get; set; }
 		public string name { get; set; }
 		public double score { get; set; }
+		public string desc { get; set; }
 	}
 }
