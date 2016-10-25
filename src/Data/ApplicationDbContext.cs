@@ -23,6 +23,6 @@ namespace ShangYi.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-		public DbSet<MyClass> MyClass { get; set; }
+		public DbSet<PhoneNumberModel> PhoneNumber { get; set; }
 	}
 }

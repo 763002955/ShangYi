@@ -14,20 +14,6 @@ namespace ShangYi.Controllers
             return View();
         }
 
-		public IActionResult hello (string msg)
-		{
-			return Json (new { Msg = msg });
-		}
-
-		public IActionResult haha ()
-		{
-			MyClass obj = new MyClass();
-			obj.name = "John";
-			obj.id = 9;
-			obj.score = 0.5;
-			return Json (obj);
-		}
-
         public IActionResult Error()
         {
             return View();

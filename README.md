@@ -92,15 +92,10 @@
 - Version
 - Static File
 
-## Department Number
+## Phone Number
 
-- Department
-- Phone Number
-
-## Office Number
-
+- Department/Job-title
 - Name
-- Job-title
 - Phone Number
 
 ## Article (Composite)

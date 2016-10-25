@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace src.Migrations
 {
-    public partial class Init : Migration
+    public partial class PhoneNumberAPI : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,18 +63,18 @@ namespace src.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MyClass",
+                name: "PhoneNumber",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    desc = table.Column<string>(nullable: true),
-                    name = table.Column<string>(nullable: true),
-                    score = table.Column<double>(nullable: false)
+                    Department = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Number = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MyClass", x => x.id);
+                    table.PrimaryKey("PK_PhoneNumber", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -223,7 +223,7 @@ namespace src.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "MyClass");
+                name: "PhoneNumber");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -8,24 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using ShangYi.Data;
 using ShangYi.Models;
 
-namespace ShangYi.Controllers
+namespace ShangYi.Controllers.mvc
 {
-    public class MyClassController : Controller
+    public class PhoneNumberController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MyClassController(ApplicationDbContext context)
+        public PhoneNumberController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
-        // GET: MyClass
+        // GET: PhoneNumber
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MyClass.ToListAsync());
+            return View(await _context.PhoneNumber.ToListAsync());
         }
 
-        // GET: MyClass/Details/5
+        // GET: PhoneNumber/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,38 +33,38 @@ namespace ShangYi.Controllers
                 return NotFound();
             }
 
-            var myClass = await _context.MyClass.SingleOrDefaultAsync(m => m.id == id);
-            if (myClass == null)
+            var phoneNumberModel = await _context.PhoneNumber.SingleOrDefaultAsync(m => m.ID == id);
+            if (phoneNumberModel == null)
             {
                 return NotFound();
             }
 
-            return View(myClass);
+            return View(phoneNumberModel);
         }
 
-        // GET: MyClass/Create
+        // GET: PhoneNumber/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: MyClass/Create
+        // POST: PhoneNumber/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,name,score")] MyClass myClass)
+        public async Task<IActionResult> Create([Bind("ID,Department,Name,Number")] PhoneNumberModel phoneNumberModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(myClass);
+                _context.Add(phoneNumberModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(myClass);
+            return View(phoneNumberModel);
         }
 
-        // GET: MyClass/Edit/5
+        // GET: PhoneNumber/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace ShangYi.Controllers
                 return NotFound();
             }
 
-            var myClass = await _context.MyClass.SingleOrDefaultAsync(m => m.id == id);
-            if (myClass == null)
+            var phoneNumberModel = await _context.PhoneNumber.SingleOrDefaultAsync(m => m.ID == id);
+            if (phoneNumberModel == null)
             {
                 return NotFound();
             }
-            return View(myClass);
+            return View(phoneNumberModel);
         }
 
-        // POST: MyClass/Edit/5
+        // POST: PhoneNumber/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,name,score")] MyClass myClass)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Department,Name,Number")] PhoneNumberModel phoneNumberModel)
         {
-            if (id != myClass.id)
+            if (id != phoneNumberModel.ID)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace ShangYi.Controllers
             {
                 try
                 {
-                    _context.Update(myClass);
+                    _context.Update(phoneNumberModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MyClassExists(myClass.id))
+                    if (!PhoneNumberModelExists(phoneNumberModel.ID))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace ShangYi.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(myClass);
+            return View(phoneNumberModel);
         }
 
-        // GET: MyClass/Delete/5
+        // GET: PhoneNumber/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,29 +123,29 @@ namespace ShangYi.Controllers
                 return NotFound();
             }
 
-            var myClass = await _context.MyClass.SingleOrDefaultAsync(m => m.id == id);
-            if (myClass == null)
+            var phoneNumberModel = await _context.PhoneNumber.SingleOrDefaultAsync(m => m.ID == id);
+            if (phoneNumberModel == null)
             {
                 return NotFound();
             }
 
-            return View(myClass);
+            return View(phoneNumberModel);
         }
 
-        // POST: MyClass/Delete/5
+        // POST: PhoneNumber/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var myClass = await _context.MyClass.SingleOrDefaultAsync(m => m.id == id);
-            _context.MyClass.Remove(myClass);
+            var phoneNumberModel = await _context.PhoneNumber.SingleOrDefaultAsync(m => m.ID == id);
+            _context.PhoneNumber.Remove(phoneNumberModel);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        private bool MyClassExists(int id)
+        private bool PhoneNumberModelExists(int id)
         {
-            return _context.MyClass.Any(e => e.id == id);
+            return _context.PhoneNumber.Any(e => e.ID == id);
         }
     }
 }

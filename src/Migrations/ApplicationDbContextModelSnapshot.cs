@@ -172,20 +172,21 @@ namespace src.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ShangYi.Models.MyClass", b =>
+            modelBuilder.Entity("ShangYi.Models.PhoneNumberModel", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("desc");
+                    b.Property<string>("Department")
+                        .IsRequired();
 
-                    b.Property<string>("name");
+                    b.Property<string>("Name");
 
-                    b.Property<double>("score");
+                    b.Property<int>("Number");
 
-                    b.HasKey("id");
+                    b.HasKey("ID");
 
-                    b.ToTable("MyClass");
+                    b.ToTable("PhoneNumber");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

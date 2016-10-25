@@ -8,8 +8,8 @@ using Newtonsoft.Json;
 
 namespace APITest
 {
-    public class Program
-    {
+	public class Program
+	{
 		private static async Task MainScheme (
 			Func<HttpClient, Task<HttpResponseMessage>> fn)
 		{
@@ -34,13 +34,27 @@ namespace APITest
 		{
 			MainScheme ((client) =>
 			{
-				var obj = new { name = "Jack", score = 0.5 };
+				client.BaseAddress = new Uri ("http://localhost:2081");
+
+				var apiAddr = "/api/PhoneNumber/";
+				var idAddr = "1/";
+				var obj = new { id = 1, Department = "Marketing", Name = "John", Number = 12345 };
+
 				var jsonStr = JsonConvert.SerializeObject (obj);
 				Console.WriteLine (jsonStr);
-				//return client.PostAsync ("http://localhost:2081/api/MyClasses/",
-				//	new StringContent(jsonStr, Encoding.UTF8, "application/json"));
+				var content = new StringContent (jsonStr, Encoding.UTF8, "application/json");
 
-				return client.GetAsync ("http://localhost:2081/api/MyClasses/");
+				return client.DeleteAsync (apiAddr + idAddr);
+
+				return client.PutAsync (apiAddr + idAddr, content);
+
+				return client.PostAsync (apiAddr, content);
+
+				return client.GetAsync (apiAddr);
+
+				return client.GetAsync (apiAddr + idAddr);
+
+				// Return Get/Post/Put/Delete Async
 			}).Wait ();
 		}
 	}

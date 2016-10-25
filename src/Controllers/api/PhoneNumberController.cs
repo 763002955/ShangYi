@@ -11,57 +11,57 @@ using ShangYi.Models;
 namespace ShangYi.Controllers
 {
     [Produces("application/json")]
-    [Route("api/MyClasses")]
-    public class MyClassesController : Controller
+    [Route("api/PhoneNumber")]
+    public class apiPhoneNumberController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MyClassesController(ApplicationDbContext context)
+        public apiPhoneNumberController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/MyClasses
+        // GET: api/PhoneNumber
         [HttpGet]
-        public IEnumerable<MyClass> GetMyClass()
+        public IEnumerable<PhoneNumberModel> GetPhoneNumber()
         {
-            return _context.MyClass;
+            return _context.PhoneNumber;
         }
 
-        // GET: api/MyClasses/5
+        // GET: api/PhoneNumber/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMyClass([FromRoute] int id)
+        public async Task<IActionResult> GetPhoneNumberModel([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            MyClass myClass = await _context.MyClass.SingleOrDefaultAsync(m => m.id == id);
+            PhoneNumberModel phoneNumberModel = await _context.PhoneNumber.SingleOrDefaultAsync(m => m.ID == id);
 
-            if (myClass == null)
+            if (phoneNumberModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(myClass);
+            return Ok(phoneNumberModel);
         }
 
-        // PUT: api/MyClasses/5
+        // PUT: api/PhoneNumber/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMyClass([FromRoute] int id, [FromBody] MyClass myClass)
+        public async Task<IActionResult> PutPhoneNumberModel([FromRoute] int id, [FromBody] PhoneNumberModel phoneNumberModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != myClass.id)
+            if (id != phoneNumberModel.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(myClass).State = EntityState.Modified;
+            _context.Entry(phoneNumberModel).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace ShangYi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MyClassExists(id))
+                if (!PhoneNumberModelExists(id))
                 {
                     return NotFound();
                 }
@@ -79,26 +79,26 @@ namespace ShangYi.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(phoneNumberModel);
         }
 
-        // POST: api/MyClasses
+        // POST: api/PhoneNumber
         [HttpPost]
-        public async Task<IActionResult> PostMyClass([FromBody] MyClass myClass)
+        public async Task<IActionResult> PostPhoneNumberModel([FromBody] PhoneNumberModel phoneNumberModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.MyClass.Add(myClass);
+            _context.PhoneNumber.Add(phoneNumberModel);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (MyClassExists(myClass.id))
+                if (PhoneNumberModelExists(phoneNumberModel.ID))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -108,33 +108,33 @@ namespace ShangYi.Controllers
                 }
             }
 
-            return CreatedAtAction("GetMyClass", new { id = myClass.id }, myClass);
+            return CreatedAtAction("GetPhoneNumberModel", new { id = phoneNumberModel.ID }, phoneNumberModel);
         }
 
-        // DELETE: api/MyClasses/5
+        // DELETE: api/PhoneNumber/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMyClass([FromRoute] int id)
+        public async Task<IActionResult> DeletePhoneNumberModel([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            MyClass myClass = await _context.MyClass.SingleOrDefaultAsync(m => m.id == id);
-            if (myClass == null)
+            PhoneNumberModel phoneNumberModel = await _context.PhoneNumber.SingleOrDefaultAsync(m => m.ID == id);
+            if (phoneNumberModel == null)
             {
                 return NotFound();
             }
 
-            _context.MyClass.Remove(myClass);
+            _context.PhoneNumber.Remove(phoneNumberModel);
             await _context.SaveChangesAsync();
 
-            return Ok(myClass);
+            return Ok(phoneNumberModel);
         }
 
-        private bool MyClassExists(int id)
+        private bool PhoneNumberModelExists(int id)
         {
-            return _context.MyClass.Any(e => e.id == id);
+            return _context.PhoneNumber.Any(e => e.ID == id);
         }
     }
 }
