@@ -37,22 +37,18 @@ namespace APITest
 				client.BaseAddress = new Uri ("http://localhost:2081");
 
 				var apiAddr = "/api/PhoneNumber/";
-				var idAddr = "1/";
-				var obj = new { id = 1, Department = "Marketing", Name = "John", Number = 12345 };
+				var idAddr = "1002/";
+				var obj = new { Department = "开发", /*Name = "哈哈",*/ Number = 12345 };
 
 				var jsonStr = JsonConvert.SerializeObject (obj);
 				Console.WriteLine (jsonStr);
 				var content = new StringContent (jsonStr, Encoding.UTF8, "application/json");
 
-				return client.DeleteAsync (apiAddr + idAddr);
-
-				return client.PutAsync (apiAddr + idAddr, content);
-
 				return client.PostAsync (apiAddr, content);
-
-				return client.GetAsync (apiAddr);
-
 				return client.GetAsync (apiAddr + idAddr);
+				return client.GetAsync (apiAddr);
+				return client.DeleteAsync (apiAddr + idAddr);
+				return client.PutAsync (apiAddr + idAddr, content);
 
 				// Return Get/Post/Put/Delete Async
 			}).Wait ();

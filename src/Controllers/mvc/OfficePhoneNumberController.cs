@@ -10,22 +10,23 @@ using ShangYi.Models;
 
 namespace ShangYi.Controllers.mvc
 {
-    public class PhoneNumberController : Controller
+    public class OfficePhoneNumberController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public PhoneNumberController(ApplicationDbContext context)
+        public OfficePhoneNumberController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context;    
         }
 
-        // GET: PhoneNumber
+        // GET: OfficePhoneNumber
         public async Task<IActionResult> Index()
         {
-            return View(await _context.PhoneNumber.ToListAsync());
+            return View(await _context.PhoneNumber
+				.Where (m => m.Name != null).ToListAsync());
         }
 
-        // GET: PhoneNumber/Details/5
+        // GET: OfficePhoneNumber/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,13 +43,13 @@ namespace ShangYi.Controllers.mvc
             return View(phoneNumberModel);
         }
 
-        // GET: PhoneNumber/Create
+        // GET: OfficePhoneNumber/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: PhoneNumber/Create
+        // POST: OfficePhoneNumber/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +65,7 @@ namespace ShangYi.Controllers.mvc
             return View(phoneNumberModel);
         }
 
-        // GET: PhoneNumber/Edit/5
+        // GET: OfficePhoneNumber/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +81,7 @@ namespace ShangYi.Controllers.mvc
             return View(phoneNumberModel);
         }
 
-        // POST: PhoneNumber/Edit/5
+        // POST: OfficePhoneNumber/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,7 +116,7 @@ namespace ShangYi.Controllers.mvc
             return View(phoneNumberModel);
         }
 
-        // GET: PhoneNumber/Delete/5
+        // GET: OfficePhoneNumber/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,7 +133,7 @@ namespace ShangYi.Controllers.mvc
             return View(phoneNumberModel);
         }
 
-        // POST: PhoneNumber/Delete/5
+        // POST: OfficePhoneNumber/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
