@@ -44,9 +44,9 @@ namespace APITest
 				Console.WriteLine (jsonStr);
 				var content = new StringContent (jsonStr, Encoding.UTF8, "application/json");
 
+				return client.GetAsync (apiAddr);
 				return client.PostAsync (apiAddr, content);
 				return client.GetAsync (apiAddr + idAddr);
-				return client.GetAsync (apiAddr);
 				return client.DeleteAsync (apiAddr + idAddr);
 				return client.PutAsync (apiAddr + idAddr, content);
 

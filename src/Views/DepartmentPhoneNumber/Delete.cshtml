@@ -1,11 +1,12 @@
 @model ShangYi.Models.PhoneNumberModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Delete";
 }
 
-<h2>Details</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>PhoneNumberModel</h4>
     <hr />
@@ -17,20 +18,17 @@
             @Html.DisplayFor(model => model.Department)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Number)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Number)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
 </div>

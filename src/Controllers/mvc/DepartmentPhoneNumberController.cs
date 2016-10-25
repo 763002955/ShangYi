@@ -54,10 +54,11 @@ namespace ShangYi.Controllers.mvc
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Department,Name,Number")] PhoneNumberModel phoneNumberModel)
+        public async Task<IActionResult> Create([Bind("ID,Department,Number")] PhoneNumberModel phoneNumberModel)
         {
             if (ModelState.IsValid)
             {
+				phoneNumberModel.Name = null;
                 _context.Add(phoneNumberModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -86,7 +87,7 @@ namespace ShangYi.Controllers.mvc
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Department,Name,Number")] PhoneNumberModel phoneNumberModel)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Department,Number")] PhoneNumberModel phoneNumberModel)
         {
             if (id != phoneNumberModel.ID)
             {
@@ -96,8 +97,9 @@ namespace ShangYi.Controllers.mvc
             if (ModelState.IsValid)
             {
                 try
-                {
-                    _context.Update(phoneNumberModel);
+				{
+					phoneNumberModel.Name = null;
+					_context.Update(phoneNumberModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
