@@ -24,5 +24,8 @@ namespace ShangYi.Data
         }
 
 		public DbSet<PhoneNumberModel> PhoneNumber { get; set; }
+
+        public DbSet<CarPoolingModel> CarPooling { get; set; }
+
 	}
 }

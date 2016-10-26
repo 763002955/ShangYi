@@ -95,7 +95,7 @@
 ## Phone Number
 
 - Department/Job-title
-- Name
+- Name (null or not null)
 - Phone Number
 
 ## Article (Composite)
