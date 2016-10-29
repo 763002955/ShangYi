@@ -27,5 +27,7 @@ namespace ShangYi.Data
 
         public DbSet<CarPoolingModel> CarPooling { get; set; }
 
+        public DbSet<HiringModel> HiringModel { get; set; }
+
 	}
 }
