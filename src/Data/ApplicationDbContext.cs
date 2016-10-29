@@ -29,5 +29,7 @@ namespace ShangYi.Data
 
         public DbSet<HiringModel> HiringModel { get; set; }
 
+        public DbSet<NotificationModel> NotificationModel { get; set; }
+
 	}
 }
