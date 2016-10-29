@@ -1,0 +1,60 @@
+@model ShangYi.Models.DocumentModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DocumentModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Attachment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Attachment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Index)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Index)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Uploader)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Uploader)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

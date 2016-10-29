@@ -146,7 +146,6 @@
 - Content
 - Phone Number
 - UID
-- Timestamp
 
 ## Document
 
@@ -157,4 +156,3 @@
 - Uploader
 - Timestamp
 - UID
-- Timestamp

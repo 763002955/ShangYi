@@ -31,5 +31,7 @@ namespace ShangYi.Data
 
         public DbSet<NotificationModel> NotificationModel { get; set; }
 
+        public DbSet<DocumentModel> DocumentModel { get; set; }
+
 	}
 }
