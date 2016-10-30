@@ -19,9 +19,8 @@ namespace ShangYi.Models
 
         [Required]
         public string Content { get; set; }
-
-        [Required]
-        public Byte Attachment { get; set; }
+		
+        public byte[] Attachment { get; set; }
 
         [Required]
         public string Uploader { get; set; }
