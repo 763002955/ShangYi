@@ -1,37 +1,44 @@
-@model IEnumerable<ShangYi.Models.HiringModel>
+﻿@model IEnumerable<ShangYi.Models.HiringModel>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>招聘信息</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">新建</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Details)
+                @*@Html.DisplayNameFor(model => model.Position)*@
+                职位
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location)
+                @*@Html.DisplayNameFor(model => model.Salary)*@
+                薪水
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                @*@Html.DisplayNameFor(model => model.Details)*@
+                详情
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Position)
+                @*@Html.DisplayNameFor(model => model.Location)*@
+                地理位置
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Salary)
+                @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
+                联系电话
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeStamp)
+                @*@Html.DisplayNameFor(model => model.TimeStamp)*@
+                发布时间
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UID)
+                @*@Html.DisplayNameFor(model => model.UID)*@
+                用户ID
             </th>
             <th></th>
         </tr>
@@ -61,9 +68,9 @@
                 @Html.DisplayFor(modelItem => item.UID)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.id">编辑</a> |
+                <a asp-action="Details" asp-route-id="@item.id">查看详情</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">删除</a>
             </td>
         </tr>
 }

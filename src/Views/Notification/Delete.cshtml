@@ -1,58 +1,64 @@
-@model ShangYi.Models.NotificationModel
+﻿@model ShangYi.Models.NotificationModel
 
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>删除</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>是否确认删除?</h3>
 <div>
-    <h4>NotificationModel</h4>
+    <h4>公告</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeStamp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TimeStamp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            标题
+            @*@Html.DisplayNameFor(model => model.Title)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.UID)
+            内容
+            @*@Html.DisplayNameFor(model => model.content)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.content)
+        </dd>
+        <dt>
+            用户ID
+            @*@Html.DisplayNameFor(model => model.UID)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.UID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Uploader)
+            上传者
+            @*@Html.DisplayNameFor(model => model.Uploader)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Uploader)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.content)
+            联系电话
+            @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.content)
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            发布时间
+            @*@Html.DisplayNameFor(model => model.TimeStamp)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
         </dd>
     </dl>
     
     <form asp-action="Delete">
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            <a asp-action="Index">返回</a>
         </div>
     </form>
 </div>

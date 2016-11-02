@@ -1,54 +1,60 @@
-@model ShangYi.Models.NotificationModel
+﻿@model ShangYi.Models.NotificationModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>详细信息</h2>
 
 <div>
-    <h4>NotificationModel</h4>
+    <h4>公告</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeStamp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TimeStamp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            标题
+            @*@Html.DisplayNameFor(model => model.Title)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.UID)
+            内容
+            @*@Html.DisplayNameFor(model => model.content)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.content)
+        </dd>
+        <dt>
+            用户ID
+            @*@Html.DisplayNameFor(model => model.UID)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.UID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Uploader)
+            上传者
+            @*@Html.DisplayNameFor(model => model.Uploader)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Uploader)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.content)
+            联系电话
+            @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.content)
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            发布时间
+            @*@Html.DisplayNameFor(model => model.TimeStamp)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id">编辑</a> |
+    <a asp-action="Index">返回</a>
 </div>

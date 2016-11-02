@@ -1,23 +1,25 @@
-@model ShangYi.Models.PhoneNumberModel
+﻿@model ShangYi.Models.PhoneNumberModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>详细信息</h2>
 
 <div>
-    <h4>PhoneNumberModel</h4>
+    <h4>部门联系电话</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Department)
+            @*@Html.DisplayNameFor(model => model.Department)*@
+            部门
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Department)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Number)
+            @*@Html.DisplayNameFor(model => model.Number)*@
+            联系电话
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Number)
@@ -25,6 +27,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.ID">编辑</a> |
+    <a asp-action="Index">返回</a>
 </div>

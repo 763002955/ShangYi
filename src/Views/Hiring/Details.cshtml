@@ -1,53 +1,60 @@
-@model ShangYi.Models.HiringModel
+﻿@model ShangYi.Models.HiringModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>详细信息</h2>
 
 <div>
-    <h4>HiringModel</h4>
+    <h4>招聘信息</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Details)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Position)
+            职位
+            @*@Html.DisplayNameFor(model => model.Position)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Position)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Salary)
+            薪水
+            @*@Html.DisplayNameFor(model => model.Salary)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Salary)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TimeStamp)
+            详情
+            @*@Html.DisplayNameFor(model => model.Details)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt>
+            地理位置
+            @*@Html.DisplayNameFor(model => model.Location)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt>
+            联系电话
+            @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            发布时间
+            @*@Html.DisplayNameFor(model => model.TimeStamp)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.TimeStamp)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.UID)
+            用户ID
+            @*@Html.DisplayNameFor(model => model.UID)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.UID)
@@ -55,6 +62,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id">编辑</a> |
+    <a asp-action="Index">返回</a>
 </div>
