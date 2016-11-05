@@ -1,53 +1,60 @@
-@model ShangYi.Models.CarPoolingModel
+﻿@model ShangYi.Models.CarPoolingModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>详细信息</h2>
 
 <div>
-    <h4>CarPoolingModel</h4>
+    <h4>拼车信息</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.From)
+            出发地
+            @*@Html.DisplayNameFor(model => model.From)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.From)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeStamp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TimeStamp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.To)
+            目的地
+            @*@Html.DisplayNameFor(model => model.To)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.To)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.UID)
+            姓名
+            @*@Html.DisplayNameFor(model => model.Name)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            联系电话
+            @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            出发时间
+            @*@Html.DisplayNameFor(model => model.Time)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+        <dt>
+            发布时间
+            @*@Html.DisplayNameFor(model => model.TimeStamp)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+        <dt>
+            用户ID
+            @*@Html.DisplayNameFor(model => model.UID)*@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.UID)
@@ -55,6 +62,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id">编辑</a> |
+    <a asp-action="Index">返回</a>
 </div>
