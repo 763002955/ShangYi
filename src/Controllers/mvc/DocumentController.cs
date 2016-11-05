@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using ShangYi.Data;
 using ShangYi.Models;
 using Microsoft.AspNetCore.Http;
+using System.Net.Http;
+using System.Net;
+using System.IO;
 
 namespace ShangYi.Controllers.mvc
 {
@@ -41,6 +44,19 @@ namespace ShangYi.Controllers.mvc
 			}
 
 			return View (documentModel);
+		}
+
+		public async Task<IActionResult> DownloadAttachment (int? id)
+		{
+			if (id == null)
+				return NotFound ();
+
+			var documentModel = await _context.DocumentModel.SingleOrDefaultAsync (m => m.id == id);
+			if (documentModel == null)
+				return NotFound ();
+
+			var stream = new MemoryStream (documentModel.Attachment);
+			return new FileStreamResult (stream, "application/octet-stream");
 		}
 
 		// GET: Document/Create
