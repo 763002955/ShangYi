@@ -70,12 +70,12 @@ namespace ShangYi.Controllers.mvc
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create (DocumentModel documentModel, IFormFile AttachmentFile)
+		public async Task<IActionResult> Create (DocumentModel documentModel, IFormFile Attachment)
 		{
-			if (ModelState.IsValid && AttachmentFile != null && AttachmentFile.Length != 0)
+			if (ModelState.IsValid && Attachment != null && Attachment.Length != 0)
 			{
-				documentModel.Attachment = new byte[AttachmentFile.Length];
-				AttachmentFile.OpenReadStream ().Read (documentModel.Attachment, 0, (int) AttachmentFile.Length);
+				documentModel.Attachment = new byte[Attachment.Length];
+				Attachment.OpenReadStream ().Read (documentModel.Attachment, 0, (int) Attachment.Length);
 				documentModel.TimeStamp = DateTime.Now;
 				_context.Add (documentModel);
 				await _context.SaveChangesAsync ();
@@ -105,7 +105,7 @@ namespace ShangYi.Controllers.mvc
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit (int id, [Bind ("id,Attachment,Content,Index,TimeStamp,Title,UID,Uploader")] DocumentModel documentModel)
+		public async Task<IActionResult> Edit (int id, DocumentModel documentModel, IFormFile Attachment)
 		{
 			if (id != documentModel.id)
 			{
@@ -116,8 +116,19 @@ namespace ShangYi.Controllers.mvc
 			{
 				try
 				{
+					if (Attachment != null && Attachment.Length != 0)
+					{
+						documentModel.Attachment = new byte[Attachment.Length];
+						Attachment.OpenReadStream ().Read (documentModel.Attachment, 0, (int) Attachment.Length);
+					}
+
 					documentModel.TimeStamp = DateTime.Now;
 					_context.Update (documentModel);
+
+					// Leave it unmodified
+					if (Attachment == null || Attachment.Length == 0)
+						_context.Entry (documentModel).Property (m => m.Attachment).IsModified = false;
+
 					await _context.SaveChangesAsync ();
 				}
 				catch (DbUpdateConcurrencyException)

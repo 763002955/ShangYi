@@ -47,7 +47,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Attachment)
+                <a asp-action="DownloadAttachment" asp-route-id="@item.id">下载</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Content)

@@ -98,14 +98,20 @@
 - Name (null or not null)
 - Phone Number
 
-## Article (Composite)
+## Category
 
-- Category
+- Name
   - 新闻资讯
   - 尚义概况
   - 下马圈乡
   - ...
-- Sub-Category ID
+- ID
+- Thumbnail
+- Sub Category IDs
+
+## Article
+
+- Category
 - Thumbnail
 - Title
 - Content
@@ -153,6 +159,7 @@
 - Index
 - Content
 - Attachment
+- AttachmentName
 - Uploader
 - Timestamp
 - UID
