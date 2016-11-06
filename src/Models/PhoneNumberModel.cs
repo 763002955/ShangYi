@@ -12,7 +12,7 @@ namespace ShangYi.Models
 		public int ID { get; set; }
 
 		[Required]
-		[DisplayName ("部门/职位")]
+		[Display(Name = "部门/职位", Prompt = "...")]
 		public string Department { get; set; }
 
 		[DisplayName ("姓名")]

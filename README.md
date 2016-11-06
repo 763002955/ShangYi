@@ -100,28 +100,29 @@
 
 ## Category
 
+- Parent ID
+- ID
 - Name
   - 新闻资讯
   - 尚义概况
   - 下马圈乡
   - ...
-- ID
 - Thumbnail
-- Sub Category IDs
+- IsLeaf
 
 ## Article
 
-- Category
-- Thumbnail
+- Category ID
 - Title
+- Thumbnail Name
 - Content
   - Text
-  - Image
+  - Image Name
 - Timestamp
 
-## Picture
+## Blob
 
-- Index
+- File Name
 - Content
 
 ## Car-pooling
@@ -131,6 +132,8 @@
 - To
 - Name
 - Phone Number
+
+..
 - UID
 - Timestamp
 
@@ -141,6 +144,8 @@
 - Location
 - Salary
 - Phone Number
+
+..
 - UID
 - Timestamp
 
@@ -148,18 +153,22 @@
 
 - Title
 - Uploader
-- Timestamp
 - Content
 - Phone Number
+
+..
 - UID
+- Timestamp
 
 ## Document
 
 - Title
 - Index
 - Content
-- Attachment
-- AttachmentName
+  - Text
+- Attachment Name
 - Uploader
-- Timestamp
+
+..
 - UID
+- Timestamp

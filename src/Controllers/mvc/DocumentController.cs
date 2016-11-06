@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Http;
 using System.Net.Http;
 using System.Net;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ShangYi.Controllers.mvc
 {
+	[Authorize]
 	public class DocumentController : Controller
 	{
 		private readonly ApplicationDbContext _context;

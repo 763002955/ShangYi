@@ -46,11 +46,13 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            @{  var content = item.Content.Substring (0, Math.Min (item.Content.Length, 10)) + "...";
+            }
             <td>
                 <a asp-action="DownloadAttachment" asp-route-id="@item.id">下载</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Content)
+                @content
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Index)

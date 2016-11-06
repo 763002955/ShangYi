@@ -29,7 +29,7 @@
             @*@Html.DisplayNameFor(model => model.Content)*@
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Content)
+            <textarea asp-for="Content" rows="15" class="form-control"></textarea>
         </dd>
         <dt>
             附件
