@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace src.Migrations
 {
-    public partial class PhoneNumberAPI : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,112 @@ namespace src.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BlobModel",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<byte[]>(nullable: true),
+                    FileName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlobModel", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CarPooling",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    From = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<int>(nullable: false),
+                    Time = table.Column<DateTime>(nullable: false),
+                    TimeStamp = table.Column<DateTime>(nullable: false),
+                    To = table.Column<string>(nullable: false),
+                    UID = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarPooling", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CategoryModel",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CID = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    ParentID = table.Column<int>(nullable: false),
+                    Thumbnail = table.Column<int>(nullable: false),
+                    isLeaf = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryModel", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DocumentModel",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Attachment = table.Column<byte[]>(nullable: true),
+                    Content = table.Column<string>(nullable: false),
+                    Index = table.Column<string>(nullable: false),
+                    TimeStamp = table.Column<DateTime>(nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    UID = table.Column<string>(nullable: false),
+                    Uploader = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DocumentModel", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HiringModel",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Details = table.Column<string>(nullable: false),
+                    Location = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    Position = table.Column<string>(nullable: false),
+                    Salary = table.Column<int>(nullable: false),
+                    TimeStamp = table.Column<DateTime>(nullable: false),
+                    UID = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HiringModel", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NotificationModel",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PhoneNumber = table.Column<int>(nullable: false),
+                    TimeStamp = table.Column<DateTime>(nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    UID = table.Column<string>(nullable: false),
+                    Uploader = table.Column<string>(nullable: false),
+                    content = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NotificationModel", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,6 +327,24 @@ namespace src.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "BlobModel");
+
+            migrationBuilder.DropTable(
+                name: "CarPooling");
+
+            migrationBuilder.DropTable(
+                name: "CategoryModel");
+
+            migrationBuilder.DropTable(
+                name: "DocumentModel");
+
+            migrationBuilder.DropTable(
+                name: "HiringModel");
+
+            migrationBuilder.DropTable(
+                name: "NotificationModel");
 
             migrationBuilder.DropTable(
                 name: "PhoneNumber");

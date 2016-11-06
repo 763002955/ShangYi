@@ -100,14 +100,14 @@
 
 ## Category
 
-- Parent ID
-- ID
+- CID
+- Parent CID
 - Name
   - 新闻资讯
   - 尚义概况
   - 下马圈乡
   - ...
-- Thumbnail
+- Thumbnail Name
 - IsLeaf
 
 ## Article

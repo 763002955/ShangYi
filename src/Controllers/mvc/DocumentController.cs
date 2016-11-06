@@ -78,6 +78,7 @@ namespace ShangYi.Controllers.mvc
 			{
 				documentModel.Attachment = new byte[Attachment.Length];
 				Attachment.OpenReadStream ().Read (documentModel.Attachment, 0, (int) Attachment.Length);
+				documentModel.UID = "Admin";
 				documentModel.TimeStamp = DateTime.Now;
 				_context.Add (documentModel);
 				await _context.SaveChangesAsync ();

@@ -23,6 +23,8 @@ namespace ShangYi.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
+		public DbSet<BlobModel> BlobModel { set; get; }
+
 		public DbSet<PhoneNumberModel> PhoneNumber { get; set; }
 
         public DbSet<CarPoolingModel> CarPooling { get; set; }
@@ -32,6 +34,8 @@ namespace ShangYi.Data
         public DbSet<NotificationModel> NotificationModel { get; set; }
 
         public DbSet<DocumentModel> DocumentModel { get; set; }
+
+		public DbSet<CategoryModel> CategoryModel { get; set; }
 
 	}
 }

@@ -172,6 +172,20 @@ namespace src.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("ShangYi.Models.BlobModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Content");
+
+                    b.Property<string>("FileName");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("BlobModel");
+                });
+
             modelBuilder.Entity("ShangYi.Models.CarPoolingModel", b =>
                 {
                     b.Property<int>("id")
@@ -200,13 +214,32 @@ namespace src.Migrations
                     b.ToTable("CarPooling");
                 });
 
+            modelBuilder.Entity("ShangYi.Models.CategoryModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CID");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ParentID");
+
+                    b.Property<int>("Thumbnail");
+
+                    b.Property<bool>("isLeaf");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("CategoryModel");
+                });
+
             modelBuilder.Entity("ShangYi.Models.DocumentModel", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<byte[]>("Attachment")
-                        .IsRequired();
+                    b.Property<byte[]>("Attachment");
 
                     b.Property<string>("Content")
                         .IsRequired();

@@ -8,8 +8,8 @@ using ShangYi.Data;
 namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161026133034_FixCarpolling")]
-    partial class FixCarpolling
+    [Migration("20161106091001_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -173,6 +173,20 @@ namespace src.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("ShangYi.Models.BlobModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Content");
+
+                    b.Property<string>("FileName");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("BlobModel");
+                });
+
             modelBuilder.Entity("ShangYi.Models.CarPoolingModel", b =>
                 {
                     b.Property<int>("id")
@@ -199,6 +213,110 @@ namespace src.Migrations
                     b.HasKey("id");
 
                     b.ToTable("CarPooling");
+                });
+
+            modelBuilder.Entity("ShangYi.Models.CategoryModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CID");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ParentID");
+
+                    b.Property<int>("Thumbnail");
+
+                    b.Property<bool>("isLeaf");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("CategoryModel");
+                });
+
+            modelBuilder.Entity("ShangYi.Models.DocumentModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Attachment");
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<string>("Index")
+                        .IsRequired();
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.Property<string>("UID")
+                        .IsRequired();
+
+                    b.Property<string>("Uploader")
+                        .IsRequired();
+
+                    b.HasKey("id");
+
+                    b.ToTable("DocumentModel");
+                });
+
+            modelBuilder.Entity("ShangYi.Models.HiringModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Details")
+                        .IsRequired();
+
+                    b.Property<string>("Location")
+                        .IsRequired();
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired();
+
+                    b.Property<string>("Position")
+                        .IsRequired();
+
+                    b.Property<int>("Salary");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<string>("UID")
+                        .IsRequired();
+
+                    b.HasKey("id");
+
+                    b.ToTable("HiringModel");
+                });
+
+            modelBuilder.Entity("ShangYi.Models.NotificationModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("PhoneNumber");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.Property<string>("UID")
+                        .IsRequired();
+
+                    b.Property<string>("Uploader")
+                        .IsRequired();
+
+                    b.Property<string>("content")
+                        .IsRequired();
+
+                    b.HasKey("id");
+
+                    b.ToTable("NotificationModel");
                 });
 
             modelBuilder.Entity("ShangYi.Models.PhoneNumberModel", b =>
