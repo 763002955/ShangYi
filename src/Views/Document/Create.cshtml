@@ -14,7 +14,7 @@
         <div class="form-group">
             <label asp-for="Attachment" class="col-md-2 control-label">附件</label>
             <div class="col-md-10">
-                <input asp-for="Attachment" type="file" />
+                <input name="AttachmentFile" type="file" />
                 <span asp-validation-for="Attachment" class="text-danger" />
             </div>
         </div>
@@ -39,6 +39,7 @@
                 <span asp-validation-for="Title" class="text-danger" />
             </div>
         </div>
+        <input asp-for="UID" type="hidden" value="Not Set" />
         <div class="form-group">
             <label asp-for="Uploader" class="col-md-2 control-label">上传者</label>
             <div class="col-md-10">

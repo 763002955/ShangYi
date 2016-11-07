@@ -48,19 +48,6 @@ namespace ShangYi.Controllers.mvc
 			return View (documentModel);
 		}
 
-		public async Task<IActionResult> DownloadAttachment (int? id)
-		{
-			if (id == null)
-				return NotFound ();
-
-			var documentModel = await _context.DocumentModel.SingleOrDefaultAsync (m => m.id == id);
-			if (documentModel == null)
-				return NotFound ();
-
-			var stream = new MemoryStream (documentModel.Attachment);
-			return new FileStreamResult (stream, "application/octet-stream");
-		}
-
 		// GET: Document/Create
 		public IActionResult Create ()
 		{
@@ -72,12 +59,11 @@ namespace ShangYi.Controllers.mvc
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create (DocumentModel documentModel, IFormFile Attachment)
+		public async Task<IActionResult> Create (DocumentModel documentModel, IFormFile AttachmentFile)
 		{
-			if (ModelState.IsValid && Attachment != null && Attachment.Length != 0)
+			if (ModelState.IsValid && AttachmentFile != null && AttachmentFile.Length != 0)
 			{
-				documentModel.Attachment = new byte[Attachment.Length];
-				Attachment.OpenReadStream ().Read (documentModel.Attachment, 0, (int) Attachment.Length);
+				documentModel.Attachment = await BlobManager.SaveBlob (_context, AttachmentFile);
 				documentModel.UID = "Admin";
 				documentModel.TimeStamp = DateTime.Now;
 				_context.Add (documentModel);
@@ -108,7 +94,7 @@ namespace ShangYi.Controllers.mvc
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit (int id, DocumentModel documentModel, IFormFile Attachment)
+		public async Task<IActionResult> Edit (int id, DocumentModel documentModel, IFormFile AttachmentFile)
 		{
 			if (id != documentModel.id)
 			{
@@ -119,19 +105,22 @@ namespace ShangYi.Controllers.mvc
 			{
 				try
 				{
-					if (Attachment != null && Attachment.Length != 0)
+					var documentModel_old = await _context.DocumentModel.AsNoTracking ()
+						.SingleOrDefaultAsync(m => m.id == id);
+
+					if (AttachmentFile != null && AttachmentFile.Length > 0)
 					{
-						documentModel.Attachment = new byte[Attachment.Length];
-						Attachment.OpenReadStream ().Read (documentModel.Attachment, 0, (int) Attachment.Length);
+						await BlobManager.DeleteBlob (_context, documentModel_old.Attachment);
+						documentModel.Attachment =
+							await BlobManager.SaveBlob (_context, AttachmentFile);
+					}
+					else
+					{
+						documentModel.Attachment = documentModel_old.Attachment;
 					}
 
 					documentModel.TimeStamp = DateTime.Now;
 					_context.Update (documentModel);
-
-					// Leave it unmodified
-					if (Attachment == null || Attachment.Length == 0)
-						_context.Entry (documentModel).Property (m => m.Attachment).IsModified = false;
-
 					await _context.SaveChangesAsync ();
 				}
 				catch (DbUpdateConcurrencyException)
@@ -173,6 +162,7 @@ namespace ShangYi.Controllers.mvc
 		public async Task<IActionResult> DeleteConfirmed (int id)
 		{
 			var documentModel = await _context.DocumentModel.SingleOrDefaultAsync(m => m.id == id);
+			await BlobManager.DeleteBlob (_context, documentModel.Attachment);
 			_context.DocumentModel.Remove (documentModel);
 			await _context.SaveChangesAsync ();
 			return RedirectToAction ("Index");

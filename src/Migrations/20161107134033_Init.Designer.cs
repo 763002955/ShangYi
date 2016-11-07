@@ -8,7 +8,7 @@ using ShangYi.Data;
 namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161106091001_Init")]
+    [Migration("20161107134033_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -240,7 +240,7 @@ namespace src.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<byte[]>("Attachment");
+                    b.Property<int>("Attachment");
 
                     b.Property<string>("Content")
                         .IsRequired();

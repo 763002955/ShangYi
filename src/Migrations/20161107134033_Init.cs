@@ -118,7 +118,7 @@ namespace src.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Attachment = table.Column<byte[]>(nullable: true),
+                    Attachment = table.Column<int>(nullable: false),
                     Content = table.Column<string>(nullable: false),
                     Index = table.Column<string>(nullable: false),
                     TimeStamp = table.Column<DateTime>(nullable: false),

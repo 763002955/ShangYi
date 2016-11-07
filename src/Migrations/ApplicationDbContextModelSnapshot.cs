@@ -239,7 +239,7 @@ namespace src.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<byte[]>("Attachment");
+                    b.Property<int>("Attachment");
 
                     b.Property<string>("Content")
                         .IsRequired();
