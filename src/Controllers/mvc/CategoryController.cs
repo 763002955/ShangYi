@@ -58,15 +58,8 @@ namespace ShangYi.Controllers.mvc
 		{
 			if (ModelState.IsValid && ThumbnailFile != null && ThumbnailFile.Length > 0)
 			{
-				var thumbnail = new BlobModel ();
-				thumbnail.FileName =
-					ThumbnailFile.FileName.Substring (ThumbnailFile.FileName.LastIndexOf ('\\') + 1);
-				thumbnail.Content = new byte[ThumbnailFile.Length];
-				ThumbnailFile.OpenReadStream ().Read (thumbnail.Content, 0, (int) ThumbnailFile.Length);
-				_context.Add (thumbnail);
-				await _context.SaveChangesAsync ();
-
-				categoryModel.Thumbnail = thumbnail.ID;
+				categoryModel.Thumbnail =
+					await BlobManager.SaveBlob (_context, ThumbnailFile);
 				_context.Add (categoryModel);
 				await _context.SaveChangesAsync ();
 
@@ -114,25 +107,20 @@ namespace ShangYi.Controllers.mvc
 			{
 				try
 				{
+					var categoryModel_old = await _context.CategoryModel.AsNoTracking ()
+						.SingleOrDefaultAsync(m => m.ID == id);
+
 					if (ThumbnailFile != null && ThumbnailFile.Length > 0)
 					{
-						var thumbnail = new BlobModel ();
-						thumbnail.FileName =
-							ThumbnailFile.FileName.Substring (ThumbnailFile.FileName.LastIndexOf ('\\') + 1);
-						thumbnail.Content = new byte[ThumbnailFile.Length];
-						ThumbnailFile.OpenReadStream ().Read (thumbnail.Content, 0, (int) ThumbnailFile.Length);
-						_context.Add (thumbnail);
-						await _context.SaveChangesAsync ();
-
-						categoryModel.Thumbnail = thumbnail.ID;
-						_context.Update (categoryModel);
+						await BlobManager.DeleteBlob (_context, categoryModel_old.Thumbnail);
+						categoryModel.Thumbnail =
+							await BlobManager.SaveBlob (_context, ThumbnailFile);
 					}
 					else
 					{
-						_context.Update (categoryModel);
-						// Leave it unmodified
-						_context.Entry (categoryModel).Property (m => m.Thumbnail).IsModified = false;
+						categoryModel.Thumbnail = categoryModel_old.Thumbnail;
 					}
+					_context.Update (categoryModel);
 					await _context.SaveChangesAsync ();
 				}
 				catch (DbUpdateConcurrencyException)
@@ -174,6 +162,7 @@ namespace ShangYi.Controllers.mvc
 		public async Task<IActionResult> DeleteConfirmed (int id)
 		{
 			var categoryModel = await _context.CategoryModel.SingleOrDefaultAsync(m => m.ID == id);
+			await BlobManager.DeleteBlob (_context, categoryModel.Thumbnail);
 			_context.CategoryModel.Remove (categoryModel);
 			await _context.SaveChangesAsync ();
 			return RedirectToAction ("Index");
